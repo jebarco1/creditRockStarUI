@@ -35,12 +35,12 @@ class Vehicles extends Component {
     
      getData = () => {
         
-         sendData(this.state.table, 'GET' , this.state).then ((result) => {
+          sendData(this.state.table, 'GET' , this.state).then ((result) => {
            let responseJSON = result;
            if(responseJSON.result && responseJSON.result.length) {    
                     let resultAddAction =  responseJSON.result.map(obj=> ({ ...obj, action: <Actions data={obj} actionDelete={this.actionDelete} element={obj.id}/> }))
                     this.setState({payload : resultAddAction});
-            }
+            } 
         }); 
     }
 
@@ -57,13 +57,14 @@ class Vehicles extends Component {
         
         return (
                 <div>
+                <AddEdit action={this.actionAdd} table={table} columns={columns}/>    
                 <div className="gridView">
                 <ReactDataGrid
                 columns={columns}
                 rowGetter={i => payload[i]}
                 rowsCount={payload.length}
                 minHeight={350} /></div>
-                <AddEdit action={this.actionAdd} table={table} columns={columns}/>        
+                   
                 </div>
               )
                 

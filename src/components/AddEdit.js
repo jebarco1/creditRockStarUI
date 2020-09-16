@@ -39,14 +39,16 @@ class AddEdit extends Component {
             {    
    
                 return (<span><label for={input.key}>{input.name}:</label><input type="text" name={input.key}  onChange={this.onChange} /></span>);
+            } else {
+                return false;
             }
         });
         
        
         return (
-        <div className="AddEdit">
+        <div className="AddDataContainer">
             {inputMarkup}
-            <button onClick={this.handleChange}>Send</button>
+            <button onClick={this.handleChange}>Create</button>
         </div>
           );
                 

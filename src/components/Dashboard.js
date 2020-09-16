@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { Button , Form, FormGroup, Label, Input } from 'reactstrap';
-import {sendData} from '../services/sendData';
 import {NavLink, Route, Switch, BrowserRouter} from 'react-router-dom';
 import Orders from './Orders';
 import Keys from './Keys';
@@ -18,7 +16,7 @@ class Dashboard extends Component {
             { label: 'Techicians' , link : '/technician' },
         ];
         
-        let linksMarkup = links.map((link, index) =>
+        let linksMarkup = links.map((link, key) =>
         {
             return (<NavLink to={link.link}>{link.label}</NavLink>);
         });

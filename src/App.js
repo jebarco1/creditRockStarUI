@@ -72,7 +72,7 @@ class App extends Component {
                <Label>Password</Label>
                <Input type="password" name="password" placeholder="Password" onChange={this.onChange} />
              </FormGroup>
-             <Button className="btn-lg btn-dark btn-block"i onClick={this.login}>log in</Button>
+             <Button className="btn-lg btn-dark btn-block" onClick={this.login}>log in</Button>
                      
                     <div className="messageContainer"><p>{this.state.message}</p></div>
 	</Form>
@@ -88,7 +88,7 @@ class App extends Component {
           
             <div className="headerActions"> 
               <p>Welcome {this.state.name} 
-              <Button className="btn-md btn-dark btn-block"i onClick={this.logout}>LOGOUT</Button>
+              <Button className="btn-md btn-dark btn-block" onClick={this.logout}>LOGOUT</Button>
             </p>
             </div>
                <Dashboard user={this.state.user}/>

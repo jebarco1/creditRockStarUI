@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import {sendData} from '../services/sendData';
 
 class Actions extends Component {
 

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import ReactDataGrid from 'react-data-grid';
 import {sendData} from '../services/sendData';
 import Actions from './Actions';
@@ -35,7 +34,7 @@ class Technician extends Component {
            if(responseJSON.result && responseJSON.result.length) {    
                     let resultAddAction =  responseJSON.result.map(obj=> ({ ...obj, action: <Actions data={obj} actionDelete={this.actionDelete} element={obj.id}/> }))
                     this.setState({payload : resultAddAction});
-            }
+            } 
         }); 
     }
 
@@ -54,13 +53,13 @@ class Technician extends Component {
         
 
         return ( <div>
+                <AddEdit action={this.actionAdd} table={table} columns={columns}/>  
                 <div id="gridRow" className="gridView">
                     <ReactDataGrid
                     columns={columns}
                     rowGetter={i => payload[i]}
                     rowsCount={payload.length}
                     minHeight={350} /></div>
-                    <AddEdit action={this.actionAdd} table={table} columns={columns}/>     
                 </div>)
                 
     }
