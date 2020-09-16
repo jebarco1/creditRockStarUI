@@ -1,6 +1,60 @@
 .App {
   text-align: center;
 }
+.contentBlock {
+    width:80%;
+    margin:auto; 
+    min-width:440px;
+    
+}
+
+.contentBlock table {
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    padding:7%;
+    display:inline-block;
+    width:100%;
+    min-width:440px;
+        
+        
+}
+.contentBlock table th {
+    width: 30%;
+    min-width:150px;
+}
+
+.contentBlock td .in {
+    color:#3796fb;
+    
+}
+
+.contentBlock td .out {
+    color:#ee4018;
+    
+}
+
+.login-form {
+max-width: 50%;
+margin: auto;
+}
+
+.headerActions {    
+    position: relative;
+    margin-bottom: 46px;
+}
+.headerActions p {right:0px}
+.headerActions button {
+    position: absolute;
+width: 20%;
+right: 0px;
+display: inline;
+}
+
+h1 {text-align:center;}
+
+h3 {padding:20px;}
+
+.messageContainer p {text-align:center;color:#ee4018;padding:10px;}
 
 .App-logo {
   height: 40vmin;
@@ -36,3 +90,33 @@
     transform: rotate(360deg);
   }
 }
+
+
+.sideMenu a {
+    min-width: 185px;
+    display: inline-block;
+    text-align: center;
+    background-color: #000;
+    color: #fff;
+}
+
+.sideMenu a:hover,.sideMenu a.active,.actionButton:hover {
+    text-decoration:none;
+    background-color: red;
+    color: #fff;
+}
+
+.actionButton {
+width: 120px;
+display: inline;
+padding: 5px !important;
+margin: 5px;
+}
+
+.AddEdit {}
+
+.AddEdit span {text-align: left;
+padding: 20px;
+width: 22%;
+display: inline-block;}
+.AddEdit input {margin-left:5px;}
