@@ -48,6 +48,7 @@ class App extends Component {
         });
         
         localStorage.removeItem('api_token');
+        window.location.replace('/');
         
     }
     
@@ -61,22 +62,22 @@ class App extends Component {
     render() {
 
 
-    if(!localStorage.getItem('api_token')) {    
+    if(!this.state.api_token) {    
         return (
                 <div className="contentBlock">
-            <Form className="login-form">
-             <h1><span className="HeaderText">Key Service Portal</span></h1>
-             <FormGroup>
-             <label>Email</label>
-             <Input type="email" name="email" placeholder="Email" onChange={this.onChange}/>
-             </FormGroup>
-             <FormGroup>
-               <Label>Password</Label>
-               <Input type="password" name="password" placeholder="Password" onChange={this.onChange} />
-             </FormGroup>
-             <Button className="btn-lg btn-dark btn-block" onClick={this.login}>log in</Button>
+                <Form className="login-form">
+                 <h1><span className="HeaderText">Key Service Portal</span></h1>
+                 <FormGroup>
+                 <label>Email</label>
+                 <Input type="email" name="email" placeholder="Email" onChange={this.onChange}/>
+                 </FormGroup>
+                 <FormGroup>
+                   <Label>Password</Label>
+                   <Input type="password" name="password" placeholder="Password" onChange={this.onChange} />
+                 </FormGroup>
+                 <Button className="btn-lg btn-dark btn-block" onClick={this.login}>log in</Button>
                      
-                    <div className="messageContainer"><p>{this.state.message}</p></div>
+            <div className="messageContainer"><p>{this.state.message}</p></div>
 	</Form>
         </div>
         );

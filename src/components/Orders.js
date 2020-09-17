@@ -3,7 +3,7 @@ import ReactDataGrid from 'react-data-grid';
 import {sendData} from '../services/sendData';
 import Actions from './Actions';
 import OrderAdd from './OrderAdd';
-import { Button , Form, FormGroup, Label, Input } from 'reactstrap';
+import { Button  } from 'reactstrap';
 
 class Orders extends Component {
     
@@ -17,17 +17,8 @@ class Orders extends Component {
            };
     }
 
-    componentWillMount()
-    {
-           sendData(this.state.table, 'GET' , this.state).then ((result) => {
-           let responseJSON = result;
-           if(responseJSON.result && responseJSON.result.length) {    
-                    let resultAddAction =  responseJSON.result.map(obj=> ({ ...obj, action: <Actions data={obj} actionDelete={this.actionDelete} element={obj.id}/> }))
-                    this.setState({payload : resultAddAction});
-            } 
-        }); 
-
-    }
+ 
+ 
     
     showAddComponent = () => {
         this.setState({showAddComponent : true});
@@ -41,23 +32,31 @@ class Orders extends Component {
          }); 
     }
     
-    getData = () => {
-        
-         sendData(this.state.table, 'GET' , this.state).then ((result) => {
-           let responseJSON = result;
-           if(responseJSON.result && responseJSON.result.length) {    
-                    let resultAddAction =  responseJSON.result.map(obj=> ({ ...obj, action: <Actions data={obj} actionDelete={this.actionDelete} element={obj.id}/> }))
-                    this.setState({payload : resultAddAction});
-            } 
-        }); 
-    }
-    
-       actionDelete = (i) => {
+      actionDelete = (i) => {
         
          sendData(this.state.table, 'DELETE' , {id : i}).then ((result) => {
              this.getData();
          }); 
     }
+    
+    getData = () => {
+         console.log('getdata mount');
+         
+         sendData(this.state.table, 'GET' , this.state).then ((result) => {
+           let responseJSON = result;
+           if(responseJSON.result && responseJSON.result.length) {    
+                    let resultAddAction =  responseJSON.result.map(obj=> ({ ...obj, action: <Actions data={obj} actionDelete={this.actionDelete} element={obj.id}/> }))
+                     this.setState({payload : resultAddAction});
+            } else {
+                   this.setState({payload : []});
+            }
+        }); 
+    }
+    
+      
+    componentWillMount() {this.getData();}
+    
+     
     
     
     render() {
@@ -68,7 +67,8 @@ class Orders extends Component {
         { key: 'price', name: 'Price' , type : 'select'},
         { key: 'technician', name: 'Techician' , type : 'select'},
         { key: 'action', name: 'Action' , type : ''},];
-           const payload = this.state.payload;
+        
+        let payload = this.state.payload;
         const table = this.state.table;
         
        

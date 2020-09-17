@@ -3,7 +3,7 @@ import ReactDataGrid from 'react-data-grid';
 import {sendData} from '../services/sendData';
 import Actions from './Actions';
 import AddEdit from './AddEdit';
-import { Button , Form, FormGroup, Label, Input } from 'reactstrap';
+import { Button } from 'reactstrap';
 
 class Technician extends Component {
 
@@ -45,6 +45,8 @@ class Technician extends Component {
            if(responseJSON.result && responseJSON.result.length) {    
                     let resultAddAction =  responseJSON.result.map(obj=> ({ ...obj, action: <Actions data={obj} actionDelete={this.actionDelete} element={obj.id}/> }))
                     this.setState({payload : resultAddAction});
+             } else {
+                    this.setState({payload : []});
             } 
         }); 
     }
