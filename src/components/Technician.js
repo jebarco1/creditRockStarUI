@@ -3,21 +3,32 @@ import ReactDataGrid from 'react-data-grid';
 import {sendData} from '../services/sendData';
 import Actions from './Actions';
 import AddEdit from './AddEdit';
+import { Button , Form, FormGroup, Label, Input } from 'reactstrap';
 
 class Technician extends Component {
 
-    state = {
+   
+    constructor() {
+        super();
+        this.state = {
+            
         payload: [],
         table: 'technician',
+        showAddComponent : false
+           };
     }
     
+    
     actionAdd = (payload) => {
-  
+         this.setState({showAddComponent : false});
          sendData(this.state.table, 'POST' , payload).then ((result) => {
              this.getData();
          }); 
     }
     
+   showAddComponent = () => {
+        this.setState({showAddComponent : true});
+    }
 
     
     actionDelete = (i) => {
@@ -52,8 +63,11 @@ class Technician extends Component {
         const table = this.state.table;
         
 
-        return ( <div>
-                <AddEdit action={this.actionAdd} table={table} columns={columns}/>  
+    return ( <div>
+                <div class="createButton"><Button onClick={this.showAddComponent} className="btn-lg btn-dark btn-block">Create</Button></div> 
+                <div style={this.state.showAddComponent ? {} : { display: 'none' }}>
+                <AddEdit action={this.actionAdd} table={table} columns={columns}/> 
+                </div>
                 <div id="gridRow" className="gridView">
                     <ReactDataGrid
                     columns={columns}

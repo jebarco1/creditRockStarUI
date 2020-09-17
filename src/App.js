@@ -43,7 +43,6 @@ class App extends Component {
             api_token : false,
             email: false,
             password:  false,
-            timesheet: false,
             message: false
         });
         

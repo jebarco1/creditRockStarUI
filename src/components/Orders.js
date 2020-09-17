@@ -3,15 +3,20 @@ import ReactDataGrid from 'react-data-grid';
 import {sendData} from '../services/sendData';
 import Actions from './Actions';
 import OrderAdd from './OrderAdd';
-
+import { Button , Form, FormGroup, Label, Input } from 'reactstrap';
 
 class Orders extends Component {
-
-    state = {
-        payload: [],
-        table: 'order'
-    }
     
+    constructor() {
+        super();
+        this.state = {
+            
+            payload: [],
+        table: 'order',
+        showAddComponent : false
+           };
+    }
+
     componentWillMount()
     {
            sendData(this.state.table, 'GET' , this.state).then ((result) => {
@@ -24,9 +29,12 @@ class Orders extends Component {
 
     }
     
+    showAddComponent = () => {
+        this.setState({showAddComponent : true});
+    }
     actionAdd = (payload) => {
         
-        console.log(payload);
+        this.setState({showAddComponent : false});
   
           sendData(this.state.table, 'POST' , payload).then ((result) => {
              this.getData();
@@ -63,10 +71,13 @@ class Orders extends Component {
            const payload = this.state.payload;
         const table = this.state.table;
         
-
+       
  
         return ( <div>
+                <div class="createButton"><Button onClick={this.showAddComponent} className="btn-lg btn-dark btn-block">Create</Button></div> 
+                <div style={this.state.showAddComponent ? {} : { display: 'none' }}>
                 <OrderAdd action={this.actionAdd} table={table} columns={columns}/>  
+                </div>
                 <div id="gridRow">
                 <ReactDataGrid
                 columns={columns}

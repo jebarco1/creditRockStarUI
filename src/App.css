@@ -91,7 +91,9 @@ h3 {padding:20px;}
   }
 }
 
-
+.sideMenu {
+    height: 45px;
+}
 .sideMenu a {
     min-width: 185px;
     display: inline-block;
@@ -106,11 +108,33 @@ h3 {padding:20px;}
     color: #fff;
 }
 
+.createButton {
+width: 882px;
+position: relative;
+}
+.createButton button {
+    width: 130px;
+    display: inline-block;
+    margin-left: 40px;
+    position: absolute;
+    right: 0px;
+    top: -55px;
+
+}
+
 .actionButton {
 width: 120px;
 display: inline;
 padding: 5px !important;
 margin: 5px;
+}
+
+.AddDataContainer {
+   padding-top: 32px;
+padding-bottom: 10px;
+border: 1px solid #ccc;
+margin: 0px 0 20px;
+border-radius: 12px;
 }
 
 .AddDataContainer span {text-align: left;
