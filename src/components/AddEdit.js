@@ -6,7 +6,9 @@ class AddEdit extends Component {
     constructor() {
         super();
         this.state = {
-            inputMessage : ''
+            inputMessage : '',
+            typeSubmit : '',
+            id : ''
            };
     }
       
@@ -16,8 +18,7 @@ class AddEdit extends Component {
 
       }
       
-      
-   
+
     handleChange = () => {
         
         let result = true;
@@ -47,26 +48,37 @@ class AddEdit extends Component {
        
     }
     
-    componentWillMount()
-    {
-          this.setState(this.props.data);
-    }
     
+    componentDidMount(){
+        //Get this.props
+  
 
- 
+      };
+
+   
+    
     render() {
         
-        if(this.props.data){
-            console.log(this.props.data);
+        let typeOf = 'Create';
+        if(this.props.inputData)
+        {
+            typeOf = 'Update';
         }
+        
         
         let inputMarkup = this.props.columns.map((input) =>
         {
-           
+            
             if(input.key !== 'action')
             {    
-   
-                return (<span><label for={input.key}>{input.name}:</label><input type="text" name={input.key}  onChange={this.onChange} /></span>);
+                if(typeOf == 'Create')
+                {
+                    return (<span><label for={input.key}>{input.name}:</label><input type="text" name={input.key}  onChange={this.onChange} /></span>);
+                
+                } else {
+
+                    return (<span><label for={input.key}>{input.name}:</label><input type="text" name={input.key} value={this.props.inputData[input.key]} onChange={this.onChange} /></span>);
+                }
             } else {
                 return false;
             }
@@ -76,7 +88,7 @@ class AddEdit extends Component {
         return (
         <div className="AddDataContainer">
             {inputMarkup}
-            <button onClick={this.handleChange}>Create</button>
+            <button onClick={this.handleChange}>{typeOf}</button>
             <div className="inputMessage">{this.state.inputMessage}</div>
         </div>
           );

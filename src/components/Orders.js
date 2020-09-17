@@ -13,6 +13,7 @@ class Orders extends Component {
             
             payload: [],
         table: 'order',
+       updateData : [],
         showAddComponent : false
            };
     }
@@ -38,6 +39,12 @@ class Orders extends Component {
              this.getData();
          }); 
     }
+     actionUpdate = (i) => {
+
+         this.setState({updateData : i});
+         this.setState({showAddComponent : true});
+    }
+    
     
     getData = () => {
          console.log('getdata mount');
@@ -45,7 +52,7 @@ class Orders extends Component {
          sendData(this.state.table, 'GET' , this.state).then ((result) => {
            let responseJSON = result;
            if(responseJSON.result && responseJSON.result.length) {    
-                    let resultAddAction =  responseJSON.result.map(obj=> ({ ...obj, action: <Actions data={obj} actionDelete={this.actionDelete} element={obj.id}/> }))
+                    let resultAddAction =  responseJSON.result.map(obj=> ({ ...obj, action: <Actions data={obj} actionDelete={this.actionDelete} actionUpdate={this.actionUpdate} element={obj.id}/> }))
                      this.setState({payload : resultAddAction});
             } else {
                    this.setState({payload : []});
@@ -71,12 +78,14 @@ class Orders extends Component {
         let payload = this.state.payload;
         const table = this.state.table;
         
-       
+        const updateData = this.state.updateData;
+        
+ 
  
         return ( <div>
                 <div class="createButton"><Button onClick={this.showAddComponent} className="btn-lg btn-dark btn-block">Create</Button></div> 
                 <div style={this.state.showAddComponent ? {} : { display: 'none' }}>
-                <OrderAdd action={this.actionAdd} table={table} columns={columns}/>  
+                <OrderAdd inputData={updateData} action={this.actionAdd} table={table} columns={columns}/>  
                 </div>
                 <div id="gridRow">
                 <ReactDataGrid

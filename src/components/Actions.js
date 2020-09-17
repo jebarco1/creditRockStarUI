@@ -7,7 +7,6 @@ class Actions extends Component {
     }
     
     handleUpdate = () => {
-        
         this.props.actionUpdate(this.props.data);          
     }
  
@@ -16,8 +15,8 @@ class Actions extends Component {
        
         return (
                 <div>
-                    <button className="actionDelete actionButton btn-sm btn-dark btn btn-secondary" onClick={this.handleDelete} >delete</button>
-                    
+                    <button className="actionButton btn-sm btn-dark btn btn-secondary" onClick={this.handleDelete} >delete</button>
+                    <button className="actionButton btn-sm btn-dark btn btn-secondary" onClick={this.handleUpdate} >Update</button>
                 </div>
           )
                 

@@ -15,6 +15,7 @@ class Vehicles extends Component {
         this.state = {
             payload: [],
             table: 'vehicle',
+                    updateData : [],
                showAddComponent : false
         };
     }
@@ -37,16 +38,22 @@ class Vehicles extends Component {
          }); 
     }
     
-     getData = () => {
+     actionUpdate = (i) => {
+
+         this.setState({updateData : i});
+         this.setState({showAddComponent : true});
+    }
+    
+    getData = () => {
         
-          sendData(this.state.table, 'GET' , this.state).then ((result) => {
+         sendData(this.state.table, 'GET' , this.state).then ((result) => {
            let responseJSON = result;
            if(responseJSON.result && responseJSON.result.length) {    
-                    let resultAddAction =  responseJSON.result.map(obj=> ({ ...obj, action: <Actions data={obj} actionDelete={this.actionDelete} element={obj.id}/> }))
+                    let resultAddAction =  responseJSON.result.map(obj=> ({ ...obj, action: <Actions data={obj} actionDelete={this.actionDelete} actionUpdate={this.actionUpdate} element={obj.id}/> }))
                     this.setState({payload : resultAddAction});
-            } else {
+             } else {
                     this.setState({payload : []});
-            }
+            } 
         }); 
     }
 
@@ -60,11 +67,14 @@ class Vehicles extends Component {
         { key: 'action', name: 'Action' },];
         const payload = this.state.payload;
         const table = this.state.table;
+         const updateData = this.state.updateData;
+        
+ 
         
      return ( <div>
                 <div class="createButton"><Button onClick={this.showAddComponent} className="btn-lg btn-dark btn-block">Create</Button></div> 
                 <div style={this.state.showAddComponent ? {} : { display: 'none' }}>
-                <AddEdit action={this.actionAdd} table={table} columns={columns}/>   
+                <AddEdit  inputData={updateData} action={this.actionAdd} table={table} columns={columns}/>   
                 </div>
                 <div className="gridView">
                 <ReactDataGrid

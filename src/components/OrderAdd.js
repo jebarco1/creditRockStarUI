@@ -66,7 +66,15 @@ class OrderAdd extends Component {
  
     render() {
         
-    
+        
+        let typeOf = 'Create';
+        if(this.props.inputData)
+        {
+            typeOf = 'Update';
+      
+        }
+
+        
     let keyItemNameOptions  = this.state.key.map((val, key) =>
     {
             return(<option value={val.id}>{val.item_name} [{val.price}]</option>);
@@ -89,7 +97,7 @@ class OrderAdd extends Component {
             <span><label for='keyItem'>Item Name:</label><select name='key_id' onChange={this.onChange}><option value="">Select Item..</option>{keyItemNameOptions}</select></span>
             <span><label for='keyItem'>Vehicle:</label><select name='vehicle_id' onChange={this.onChange}><option value="">Select Vehicle..</option>{vehicleNameOptions}</select></span>
             <span><label for='keyItem'>Technician:</label><select name='technician_id' onChange={this.onChange}><option value="">Select Technician..</option>{technicianNameOptions}</select></span>
-             <button onClick={this.handleChange}>Create</button>
+             <button onClick={this.handleChange}>{typeOf}</button>
             <div className="inputMessage">{this.state.inputMessage}</div>
          </div>
     );
