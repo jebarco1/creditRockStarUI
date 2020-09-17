@@ -142,3 +142,6 @@ padding: 20px;
 width: 22%;
 display: inline-block;}
 .AddDataContainer input,.AddDataContainer select {margin-left:5px;}
+
+
+.inputMessage {margin-left:25px;color:red;}

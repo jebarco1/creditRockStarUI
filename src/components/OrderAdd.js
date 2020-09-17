@@ -9,15 +9,38 @@ class OrderAdd extends Component {
             vehicle : [],
             technician : [],
             key : [],
+            inputMessage : '',
            };
   
     handleChange = () => {
-        let payload = [
-            {key_id : this.state.key_id,
-            vehicle_id : this.state.vehicle_id,
-            tech_id  : this.state.technician_id}
-        ];
-        this.props.action(payload);    
+   
+        let result = true;
+        let fields = ['vehicle_id','technician_id','key_id'];
+        
+        fields.map((column) => {
+                if(!this.state[column])
+                {
+                   result = false;
+                } 
+        });
+
+        
+        if(result)
+        {   
+            let payload = [
+                {key_id : this.state.key_id,
+                vehicle_id : this.state.vehicle_id,
+                tech_id  : this.state.technician_id}
+            ];
+            
+            this.setState();
+            this.props.action(payload);       
+            
+        } else {
+            
+            this.setState({inputMessage : 'All fields required!'});
+        }
+        
     }
     
     
@@ -67,6 +90,7 @@ class OrderAdd extends Component {
             <span><label for='keyItem'>Vehicle:</label><select name='vehicle_id' onChange={this.onChange}><option value="">Select Vehicle..</option>{vehicleNameOptions}</select></span>
             <span><label for='keyItem'>Technician:</label><select name='technician_id' onChange={this.onChange}><option value="">Select Technician..</option>{technicianNameOptions}</select></span>
              <button onClick={this.handleChange}>Create</button>
+            <div className="inputMessage">{this.state.inputMessage}</div>
          </div>
     );
                 

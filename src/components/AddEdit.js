@@ -6,6 +6,7 @@ class AddEdit extends Component {
     constructor() {
         super();
         this.state = {
+            inputMessage : ''
            };
     }
       
@@ -15,8 +16,35 @@ class AddEdit extends Component {
 
       }
       
+      
+   
     handleChange = () => {
-        this.props.action(this.state);          
+        
+        let result = true;
+        let payload = {};
+        
+        this.props.columns.map((column) => {
+            if(column.key !== 'action')
+            { 
+                if(!this.state[column.key])
+                {
+                   result = false;
+                } else {
+                    payload[column.key] = this.state[column.key];
+                }
+            }
+        });
+
+        
+        if(result)
+        {   
+          this.props.action(payload);    
+            
+        } else {
+            
+            this.setState({inputMessage : 'All fields required!'});
+        }
+       
     }
     
     componentWillMount()
@@ -49,6 +77,7 @@ class AddEdit extends Component {
         <div className="AddDataContainer">
             {inputMarkup}
             <button onClick={this.handleChange}>Create</button>
+            <div className="inputMessage">{this.state.inputMessage}</div>
         </div>
           );
                 
