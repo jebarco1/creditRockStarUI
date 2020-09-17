@@ -28,6 +28,7 @@ class App extends Component {
            if(responseJSON.user)
            {
                this.setState(responseJSON.user);
+               localStorage.setItem('api_token', responseJSON.user.api_token)
            } else{
                
                var message = { message : 'Login Failed try again!'};
@@ -46,6 +47,8 @@ class App extends Component {
             message: false
         });
         
+        localStorage.removeItem('api_token');
+        
     }
     
     onChange(e)
@@ -58,7 +61,7 @@ class App extends Component {
     render() {
 
 
-    if(!this.state.api_token) {    
+    if(!localStorage.getItem('api_token')) {    
         return (
                 <div className="contentBlock">
             <Form className="login-form">
@@ -90,7 +93,7 @@ class App extends Component {
               <Button className="btn-md btn-dark btn-block" onClick={this.logout}>LOGOUT</Button>
             </p>
             </div>
-               <Dashboard user={this.state.user}/>
+               <Dashboard  user={this.state.user}/>
              </div>);
  }
      

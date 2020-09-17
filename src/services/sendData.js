@@ -6,10 +6,10 @@ export function sendData(type, method , userData )
 let BaseUrl = "http://127.0.0.1:8000/api/v1/";
 
 return new Promise((resolve, reject) => {
-
+     
      var requestHeader = { method: method,  
                           headers: { 'Access-Control-Allow-Origin': '*' ,'Accept': 'application/json', 'Content-Type': 'application/json',
-                          Authorization: 'Bearer ' + userData.api_token }};
+                          Authorization: 'Bearer ' + localStorage.getItem('api_token') }};
             
     if(method !== 'GET')
     {    
