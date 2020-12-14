@@ -13,7 +13,7 @@ class Welcome extends Component {
     render() {
       
         
-        return ( <div><h2>Welcome to the Key Service Portal.</h2></div> )
+        return ( <div><h2>Welcome to the Credit Rockstar Portal.</h2></div> )
                 
     }
     

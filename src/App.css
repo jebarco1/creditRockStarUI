@@ -123,7 +123,7 @@ position: relative;
 }
 
 .actionButton {
-width: 120px;
+width: 110px;
 display: inline;
 padding: 5px !important;
 margin: 5px;
@@ -138,10 +138,101 @@ border-radius: 12px;
 }
 
 .AddDataContainer span {text-align: left;
-padding: 20px;
-width: 22%;
-display: inline-block;}
+margin: 8px;
+display: inline-block;
+font-size: 13px;}
+
+
+.AddDataContainer label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+.clientQuestions span {width:90% !important;}
+
+.checkBox input,.checkBox label {display:inline-block;margin-right:10px;}
 .AddDataContainer input,.AddDataContainer select {margin-left:5px;}
 
+.birthDate {width:90%;}
+.clientSection {display:block;margin-top:120px;background-color: #f2f2f2;
+border-radius: 5px;
+margin: 5px;
+padding: 15px;}
 
 .inputMessage {margin-left:25px;color:red;}
+
+.dataInput span {border-radius: 5px;padding:0px 10px 10px 10px; background-color:#fff}
+.dataInput span input {border-radius:3px;}
+.messageText {height:40px;}
+.nextButton {width:100%;position:relative;height:55px;}
+.nextButton button {right:0px;top:0px;position:absolute; display: inline-block;
+        background-color: red;
+        border-radius: 8px;
+        border: 6px double #cccccc;
+        color: #eeeeee;
+        text-align: center;
+        font-size: 12px;
+        padding: 10px;
+        -webkit-transition: all 0.5s;
+        -moz-transition: all 0.5s;
+        -o-transition: all 0.5s;
+        transition: all 0.5s;
+        cursor: pointer;
+        margin: 5px;}
+
+.preview {margin-top:40px;}
+
+.clientSection .information {margin:20px;}
+
+.previewLeft {width:70%;}
+
+.previewRight {width:25%;right:0px;position:absolute;}
+.previewblocks {display:inline-block;vertical-align:top;}
+
+#clientComponent {position:relative;}
+
+.extraDetails {background-color:#fff;border-radius: 5px;
+margin: 5px;
+padding: 15px;
+width:300px;
+height:110px;
+font-size:14px;
+display:inline-block;vertical-align:top;}
+
+
+.statusBlock {background-color:#fff;padding:15px;border-radius:5px;margin-bottom:20px}
+
+.itemList {  list-style-type: none;
+  margin: 0;
+  padding: 0;
+font-size:13px;}
+
+.itemList li { position:relative;height:30px;}
+
+.listTitle {position:absolute;left:0px;}
+
+.listValue  {position:absolute; right:0px;}
+
+.revolving-credit-table {width:200px;overflow:hidden; overflow: auto;}
+
+.revolving-credit-table tbody, .revolving-credit-table tr {width:100%;display:inline-block}
+
+p.text-center {display:none;}
+
+table {background-color:#fff;}
+
+.contentBlock table {
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    padding: 7%;
+    display: inline-block;
+    width: 100%;
+    min-width: 440px;
+    font-size: 12px;
+}
+
+.mobile-bureau-tabs {display:none;}
+
+
+
+
+

@@ -6,8 +6,13 @@ class Actions extends Component {
         this.props.actionDelete(this.props.element);          
     }
     
-    handleUpdate = () => {
-        this.props.actionUpdate(this.props.data);          
+    handlePreview = () => {
+        this.props.previewClient(this.props.data);          
+    }
+    
+    uploadCCReport = () => {
+        
+        console.log('uploadreport');
     }
  
    
@@ -15,8 +20,8 @@ class Actions extends Component {
        
         return (
                 <div>
-                    <button className="actionButton btn-sm btn-dark btn btn-secondary" onClick={this.handleDelete} >delete</button>
-                    <button className="actionButton btn-sm btn-dark btn btn-secondary" onClick={this.handleUpdate} >Update</button>
+                    <button className="actionButton btn-sm btn-dark btn btn-secondary" onClick={this.handlePreview} >Preview</button>
+                    <button className="actionButton btn-sm btn-dark btn btn-secondary" onClick={this.uploadCCReport} >Upload Report</button>
                 </div>
           )
                 

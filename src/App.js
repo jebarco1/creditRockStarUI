@@ -62,11 +62,11 @@ class App extends Component {
     render() {
 
 
-    if(!this.state.api_token) {    
+    if(this.state.api_token) {    
         return (
                 <div className="contentBlock">
                 <Form className="login-form">
-                 <h1><span className="HeaderText">Key Service Portal</span></h1>
+                 <h1><span className="HeaderText">Credit Rockstar Portal</span></h1>
                  <FormGroup>
                  <label>Email</label>
                  <Input type="email" name="email" placeholder="Email" onChange={this.onChange}/>

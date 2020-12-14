@@ -15,7 +15,9 @@
     "immutable": "^4.0.0-rc.12",
     "react": "^16.13.1",
     "react-data-grid": "^5.0.1",
+    "react-datepicker": "^3.2.2",
     "react-dom": "^16.13.1",
+    "react-images-upload": "^1.2.8",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^3.4.3",
     "reactstrap": "^8.4.1"

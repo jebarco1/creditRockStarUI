@@ -88,7 +88,7 @@ class AddEdit extends Component {
         return (
         <div className="AddDataContainer">
             {inputMarkup}
-            <button onClick={this.handleChange}>{typeOf}</button>
+            <button onClick={this.handleChange}>Create</button>
             <div className="inputMessage">{this.state.inputMessage}</div>
         </div>
           );
